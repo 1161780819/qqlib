@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 from distutils.core import setup
 
 setup(
-    name='qqlib',
+    name='qq',
     version='1.0',
-    packages=['qqlib'],
-    package_dir={'qqlib':'src'},
+    packages=['qq', 'qq.src'],
+    package_dir={'qq': '.'},
     author='JetLu',
     author_email='i@lufei.so',
     description='QQ lib for Python.'

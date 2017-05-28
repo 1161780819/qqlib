@@ -1,21 +1,27 @@
 QQLib for Python
 ---
-
-基于webqq的Python版QQ登录库。
+模拟登录`QQ`。
 
 安装
 ---
-第三方依赖：[rsa](https://pypi.python.org/pypi/rsa/)、[requests](https://pypi.python.org/pypi/requests/)。
 
-``` sh
-$ pip install rsa requests
-$ python setup.py install
 ```
-或直接复制`qqlib`到合适的位置。
+pip install rsa requests
+pip install git+https://github.com/JetLua/qqlib
+```
 
-使用方法
+
+使用
 ---
-``` python
-import qqlib
-qq=qqlib.QQ('qq','password')
+```py
+import qq
+
+qq.QQ('qq', 'password')
 ```
+
+更新说明
+---
+
+* 2017.05.08
+  * 更新了验证码获取方式
+  * 支持扫码登录
