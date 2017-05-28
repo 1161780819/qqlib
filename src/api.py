@@ -34,10 +34,11 @@ def get_login_sign():
     })
 
     if res.status_code == 200:
-        for c in res.cookies:
-            if c.name == 'pt_login_sig':
-                return {'err': 0, 'msg': 'ok', 'login_sign': c.value}
-        return {'err': 1, 'msg': 'Failed to get login sign.', 'login_sign': None}
+        sign = req.cookies.get('pt_login_sig')
+        if sign:
+            return {'err': 0, 'msg': 'ok', 'login_sign': sign}
+        else:
+            return {'err': 1, 'msg': 'Failed to get login sign.', 'login_sign': None}
     else: 
         return {'err': 1, 'msg': res.text, 'login_sign': None}
 
@@ -181,11 +182,10 @@ def _hash(str):
 
 
 def check_qr():
-    cookies = req.cookies.get_dict()
     params={
-        'login_sig' : cookies['pt_login_sig'],
+        'login_sig' : req.cookies.get('pt_login_sig'),
         'aid'       : APPID,
-        'ptqrtoken' : _hash(cookies['qrsig']),
+        'ptqrtoken' : _hash(req.cookies.get('qrsig')),
         'action'    : '0-0-1495974089776',
         'ptredirect': 0,
         'js_ver'    : 10220,
