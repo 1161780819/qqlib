@@ -16,7 +16,8 @@ pip install git+https://github.com/JetLua/qqlib
 ```py
 import qq
 
-qq.QQ('qq', 'password')
+results = qq.QQ('qq', 'password')
+print(results)
 ```
 
 更新说明

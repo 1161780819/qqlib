@@ -29,11 +29,13 @@ class QQ:
         matches = re.findall('\'(.*?)\'', results['data'])      
         
         self.salt       = matches[2].replace(r'\x', '')
-
+        print(matches)
         if matches[0] == '1':
             # The captcha is required.
+            self.mode = 1
             self.get_capture(matches[1]) 
         else:
+            self.mode       = 0
             self.code       = matches[1]
             self.session    = matches[3]
             pass
@@ -59,15 +61,15 @@ class QQ:
             self._encrpyt(),
             self.code,
             self.login_sign,
-            self.session
+            self.session,
+            self.mode
         )
 
         matches = re.findall('\'(.*?)\'', results)
         if matches[0] == '22009':
-            results = api.get_qr()
-            print(results)
+            return api.get_qr()
         else: 
-            print('end: ', matches)
+            return matches
 
     def _encrpyt(self):
         # RSA: public key

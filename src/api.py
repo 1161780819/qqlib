@@ -136,7 +136,7 @@ def verify_capture(qq, sess, code, sign, capture):
 
 
 
-def login(qq, password, code, login_sign, session):
+def login(qq, password, code, login_sign, session, mode):
 
     res = req.get(uri['login'], params={
         'action'                : '5-3-1495966725481',
@@ -152,7 +152,7 @@ def login(qq, password, code, login_sign, session):
         'pt_jstoken'            : 1419592444,
         'pt_randsalt'           : 2,
         'pt_uistyle'            : 40,
-        'pt_vcode_v1'           : 1,
+        'pt_vcode_v1'           : mode,
         'pt_verifysession_v1'   : session,
         'ptlang'                : 2052,
         'ptredirect'            : 0,
