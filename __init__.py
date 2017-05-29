@@ -29,7 +29,7 @@ class QQ:
         matches = re.findall('\'(.*?)\'', results['data'])      
         
         self.salt       = matches[2].replace(r'\x', '')
-        print(matches)
+        
         if matches[0] == '1':
             # The captcha is required.
             self.mode = 1
